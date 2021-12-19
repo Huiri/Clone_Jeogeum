@@ -25,6 +25,7 @@ import com.google.android.gms.tasks.OnFailureListener
 import com.google.android.gms.tasks.OnSuccessListener
 
 import com.google.firebase.firestore.DocumentReference
+import com.smartphoneprogamming.afinal.List.ShowWritingListActivity
 import java.text.SimpleDateFormat
 
 
@@ -62,7 +63,7 @@ class MainContentActivity : AppCompatActivity() {
         navView.setNavigationItemSelectedListener {
             when(it.itemId){
                 R.id.write_texts -> Toast.makeText(applicationContext,"현재 페이지입니다",Toast.LENGTH_SHORT).show()
-//            R.id.show_yours -> intent = Intent(this, ::class.java)
+            R.id.show_yours -> intent = Intent(this, ShowWritingListActivity::class.java)
             R.id.show_mine -> intent = Intent(this, ShowMyListActivity::class.java)
 
 //            R.id.question -> intent = Intent(this, ::class.java)
@@ -70,7 +71,8 @@ class MainContentActivity : AppCompatActivity() {
 //            R.id.logout -> intent = Intent(this, ::class.java)
 
             }
-        startActivity(intent)
+            drawerLayout.closeDrawer(GravityCompat.START);
+            startActivity(intent)
 
             true
         }
@@ -83,11 +85,6 @@ class MainContentActivity : AppCompatActivity() {
         }
 
         return super.onOptionsItemSelected(item)
-    }
-    private fun setFragment() {
-        val transaction = supportFragmentManager.beginTransaction()
-            .add(R.id.frameLayout, ShowDetailFragment())
-        transaction.commit()
     }
 
     override fun onBackPressed() {

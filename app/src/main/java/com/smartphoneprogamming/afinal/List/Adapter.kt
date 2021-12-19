@@ -36,9 +36,6 @@ class Adapter(private val writinglist : ArrayList<Writing>) : RecyclerView.Adapt
         }
     }
 
-    override fun getItemViewType(position: Int): Int {
-        return writinglist!!.get(position).type
-    }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val writing : Writing = writinglist[position]

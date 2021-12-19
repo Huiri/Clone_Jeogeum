@@ -24,4 +24,6 @@
     <string name="login">login</string>
     <string name="back">X</string>
     <string name="my_detail">방금 작성한 글</string>
+    <string name="loading">로딩중</string>
+    <string name="search">검색</string>
 </resources>
