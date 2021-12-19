@@ -1,26 +1,37 @@
 package com.smartphoneprogamming.afinal.login
 
 import android.content.Intent
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.preference.PreferenceManager
+import android.widget.CheckBox
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.smartphoneprogamming.afinal.MainContentActivity
+import com.smartphoneprogamming.afinal.R
 import com.smartphoneprogamming.afinal.databinding.ActivityLoginBinding
+import kotlinx.android.synthetic.main.activity_login.*
 
 class LoginActivity : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
     private var _binding: ActivityLoginBinding? = null
     private val binding get() = _binding!!
 
+
+    private lateinit var sharedPreferences: SharedPreferences
+    private lateinit var editor : SharedPreferences.Editor
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         _binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
         auth = Firebase.auth
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
+        editor = sharedPreferences.edit()
+        checkSharedPreference()
         //카카오 로그인
         // 카카오 로그인 정보 확인
 //        UserApiClient.instance.accessTokenInfo { tokenInfo, error ->
@@ -93,6 +104,18 @@ class LoginActivity : AppCompatActivity() {
         binding.btnemaillogin.setOnClickListener {
             val email = binding.email.text.toString()
             val password = binding.password.text.toString()
+            if(auto_login.isChecked){
+                editor.putBoolean(getString(R.string.auto_login), true)
+                editor.apply()
+                editor.putString(getString(R.string.prompt_email), email)
+                editor.putString(getString(R.string.prompt_password), password)
+                editor.commit()
+            } else {
+                editor.putBoolean(getString(R.string.auto_login), false)
+                editor.putString(getString(R.string.prompt_email), "")
+                editor.putString(getString(R.string.prompt_password), "")
+                editor.commit()
+            }
             SignIn(email, password)
         }
         binding.btnregister.setOnClickListener {
@@ -137,7 +160,14 @@ class LoginActivity : AppCompatActivity() {
                 }
         }
     }
+    private fun checkSharedPreference() {
+        val auto_login : CheckBox = findViewById(R.id.auto_login)
+        auto_login.isChecked = sharedPreferences.getBoolean(getString(R.string.auto_login), false)
+        email.setText(sharedPreferences.getString(getString(R.string.prompt_email), ""))
+        password.setText(sharedPreferences.getString(getString(R.string.prompt_password), ""))
+    }
 }
+
 
 private fun updateUI(user: FirebaseUser?) {
 

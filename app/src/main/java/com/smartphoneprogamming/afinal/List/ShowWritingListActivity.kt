@@ -17,10 +17,13 @@ import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.navigation.NavigationView
+import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.ktx.Firebase
 import com.smartphoneprogamming.afinal.List.dataModel.Writing
 import com.smartphoneprogamming.afinal.MainContentActivity
 import com.smartphoneprogamming.afinal.R
+import com.smartphoneprogamming.afinal.setting.SettingActivity
 import kotlinx.android.synthetic.main.activity_show_my_list.*
 import kotlinx.android.synthetic.main.recycler_item.view.*
 
@@ -148,13 +151,27 @@ inner class RecyclerViewAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>(
 
         navView.setNavigationItemSelectedListener {
             when(it.itemId){
-                R.id.write_texts -> intent = Intent(this, MainContentActivity::class.java)
+                R.id.write_texts -> {
+                    intent = Intent(this, MainContentActivity::class.java)
+                    finish()
+                }
                 R.id.show_yours -> Toast.makeText(applicationContext,"현재 페이지입니다", Toast.LENGTH_SHORT).show()
-                R.id.show_mine -> intent = Intent(this, ShowMyListActivity::class.java)
-                R.id.question -> intent = Intent(this, QuestionListActivity::class.java)
-//            R.id.setting -> intent = Intent(this, ::class.java)
-//            R.id.logout -> intent = Intent(this, ::class.java)
-
+                R.id.show_mine -> {
+                    intent = Intent(this, ShowMyListActivity::class.java)
+                    finish()
+                }
+                R.id.question -> {
+                    intent = Intent(this, QuestionListActivity::class.java)
+                    finish()
+                }
+                R.id.setting -> {
+                    intent = Intent(this, SettingActivity::class.java)
+                    finish()
+                }
+                R.id.logout -> {
+                    Firebase.auth.signOut()
+                    finish()
+                }
             }
             drawerLayout.closeDrawer(GravityCompat.START)
             val nick = intent.getStringExtra("nick")

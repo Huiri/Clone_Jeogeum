@@ -20,14 +20,21 @@
     <string name="complete">완료</string>
     <string name="nickname">nickname</string>
     <string name="email">email</string>
+    <string name="prompt_email">email</string>
     <string name="password">password</string>
+    <string name="prompt_password">password</string>
     <string name="login">login</string>
     <string name="back">X</string>
     <string name="my_detail">방금 작성한 글</string>
     <string name="writing_list">글 모아보기</string>
     <string name="loading">로딩중</string>
     <string name="search">검색</string>
+    <string name="login_text">로그인</string>
+    <string name="register">이메일 로그인하기</string>
     <string name="search_hint">검색어를 입력해주세요.</string>
     <string name="title">질문</string>
     <string name="question_list">질문 모음집</string>
+    <string name="auto_login">자동로그인</string>
+    <string name="register_text">회원가입하기</string>
+    <string name="goback">로그인하기</string>
 </resources>

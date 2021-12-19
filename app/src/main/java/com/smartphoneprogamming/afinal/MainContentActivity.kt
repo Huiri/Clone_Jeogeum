@@ -28,6 +28,7 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.DocumentReference
 import com.smartphoneprogamming.afinal.List.QuestionListActivity
 import com.smartphoneprogamming.afinal.List.ShowWritingListActivity
+import com.smartphoneprogamming.afinal.setting.SettingActivity
 import java.text.SimpleDateFormat
 
 
@@ -65,12 +66,22 @@ class MainContentActivity : AppCompatActivity() {
         navView.setNavigationItemSelectedListener {
             when(it.itemId){
                 R.id.write_texts -> Toast.makeText(applicationContext,"현재 페이지입니다",Toast.LENGTH_SHORT).show()
-                R.id.show_yours -> intent = Intent(this, ShowWritingListActivity::class.java)
-                R.id.show_mine -> intent = Intent(this, ShowMyListActivity::class.java)
-                R.id.question -> intent = Intent(this, QuestionListActivity::class.java)
-//            R.id.setting -> intent = Intent(this, ::class.java)
-                R.id.logout -> Firebase.auth.signOut()
-
+                R.id.show_yours -> {
+                    intent = Intent(this, ShowWritingListActivity::class.java)
+                }
+                R.id.show_mine -> {
+                    intent = Intent(this, ShowMyListActivity::class.java)
+                }
+                R.id.question -> {
+                    intent = Intent(this, QuestionListActivity::class.java)
+                }
+                R.id.setting -> {
+                    intent = Intent(this, SettingActivity::class.java)
+                }
+                R.id.logout -> {
+                    Toast.makeText(this, "로그아웃 완료.", Toast.LENGTH_LONG).show()
+                    Firebase.auth.signOut()
+                }
             }
             drawerLayout.closeDrawer(GravityCompat.START);
             intent.putExtra("nick", nick)
