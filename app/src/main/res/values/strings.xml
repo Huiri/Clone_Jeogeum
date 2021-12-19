@@ -23,4 +23,5 @@
     <string name="password">password</string>
     <string name="login">login</string>
     <string name="back">X</string>
+    <string name="my_detail">방금 작성한 글</string>
 </resources>

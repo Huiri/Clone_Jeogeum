@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         <activity
+            android:name=".ShowDetailActivity"
+            android:exported="false" />
+        <activity
             android:name=".List.DetailActivity"
             android:exported="false" />
         <activity
@@ -23,7 +26,8 @@
             android:exported="false" />
         <activity
             android:name=".MainContentActivity"
-            android:exported="true">
+            android:exported="true"
+            android:windowSoftInputMode="adjustPan">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

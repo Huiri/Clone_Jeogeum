@@ -7,7 +7,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
-import android.view.View
 import android.widget.*
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.view.GravityCompat
@@ -20,13 +19,10 @@ import com.smartphoneprogamming.afinal.List.ShowMyListActivity
 import android.widget.TextView
 
 import android.view.LayoutInflater
-import androidx.annotation.NonNull
 
 import com.google.android.gms.tasks.OnFailureListener
 
 import com.google.android.gms.tasks.OnSuccessListener
-
-import com.google.firebase.firestore.DocumentSnapshot
 
 import com.google.firebase.firestore.DocumentReference
 import java.text.SimpleDateFormat
@@ -78,10 +74,8 @@ class MainContentActivity : AppCompatActivity() {
 
             true
         }
-
-
-
     }
+
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if(toggle.onOptionsItemSelected(item)){
@@ -90,14 +84,20 @@ class MainContentActivity : AppCompatActivity() {
 
         return super.onOptionsItemSelected(item)
     }
+    private fun setFragment() {
+        val transaction = supportFragmentManager.beginTransaction()
+            .add(R.id.frameLayout, ShowDetailFragment())
+        transaction.commit()
+    }
 
-//    override fun onBackPressed() {
-//        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
-//            drawerLayout.closeDrawer(GravityCompat.START);
-//        } else {
-//            super.onBackPressed();
-//        }
-//    }
+    override fun onBackPressed() {
+        val drawerLayout : DrawerLayout = findViewById(R.id.drawer_layout)
+        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+            drawerLayout.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
+        }
+    }
     fun checkcheckbox(): Boolean {
         val checkBox = findViewById<CheckBox>(R.id.checkBox)
         return checkBox.isChecked
@@ -111,8 +111,6 @@ class MainContentActivity : AppCompatActivity() {
         if (text.isEmpty()) {
             Toast.makeText(this, "공백X", Toast.LENGTH_SHORT).show()
         } else {
-
-//            val checked = checkcheckbox()
             val posts = hashMapOf(
                 "text" to write.text.toString(),
                 "nick" to nick,
@@ -125,33 +123,24 @@ class MainContentActivity : AppCompatActivity() {
                 .addOnSuccessListener { documentReference ->
                     Log.d(TAG, "DocumentSnapshot added with ID: ${documentReference.id}")
                     Toast.makeText(this, "저장 완료", Toast.LENGTH_SHORT).show()
-                    val bundle = Bundle()
-                    bundle.putString("text", text)
+//                    val bundle = Bundle()
+//                    bundle.putString("text", text)
+//                    bundle.putString("question", question)
+//                    bundle.putString("date", dateAndtime.toString())
+                    intent = Intent(this, ShowDetailActivity::class.java)
+                    intent.putExtra("text", text)
+                    intent.putExtra("question", question)
                     write.setText("")
+//                    val fragment = ShowDetailFragment()
+//                    fragment.arguments = bundle
+//                    setFragment()
+                    startActivity(intent)
 
                 }
                 .addOnFailureListener { e ->
                     Log.w(TAG, "Error adding document", e)
                 }
-//                    db.collection("post").add(posts)
-//                        .addOnSuccessListener { documentReference ->
-//                            //progressBar.setVisibility(View.GONE);
-//                            Toast.makeText(this, "저장 완료", Toast.LENGTH_SHORT).show()
-//                            Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.id)
-//                            val bundle = Bundle()
-//                            bundle.putString("text", text)
-//                            binding.write.setText("")
-//                    setDataFragment(ShowDetailFragment(), binding.question.text.toString(), binding.writeText.text.toString())
-                            //val showFragment = ShowDetailFragment()
-                            // showFragment.arguments = bundle
-                            // val intent = Intent(this, Showtext::class.java)
-                            // intent.putExtra("text", text)
-                            // startActivity(intent)
-//                        }
-//                        .addOnFailureListener { e ->
-//                            Log.w(TAG, "Error adding document", e)
-//                        }
-                }
+            }
         }
     fun set_nick(){
         val UserRef = db.collection("users").document(email)
@@ -161,7 +150,7 @@ class MainContentActivity : AppCompatActivity() {
             inflater.inflate(R.layout.nav_header, null, false)
             val user = findViewById<TextView>(R.id.user)
             if (documentSnapshot.exists()) {
-                val nick = documentSnapshot.getString("nick")
+                nick = documentSnapshot.getString("nick").toString()
                 user.text = "$nick 님"
             }
         }
