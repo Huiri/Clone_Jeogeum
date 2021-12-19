@@ -24,6 +24,10 @@
     <string name="login">login</string>
     <string name="back">X</string>
     <string name="my_detail">방금 작성한 글</string>
+    <string name="writing_list">글 모아보기</string>
     <string name="loading">로딩중</string>
     <string name="search">검색</string>
+    <string name="search_hint">검색어를 입력해주세요.</string>
+    <string name="title">질문</string>
+    <string name="question_list">질문 모음집</string>
 </resources>

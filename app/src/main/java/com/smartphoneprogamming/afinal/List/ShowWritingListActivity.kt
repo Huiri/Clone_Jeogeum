@@ -1,17 +1,25 @@
 package com.smartphoneprogamming.afinal.List
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.Button
-import android.widget.Spinner
+import android.widget.Toast
+import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.core.view.GravityCompat
+import androidx.drawerlayout.widget.DrawerLayout
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.navigation.NavigationView
 import com.google.firebase.firestore.FirebaseFirestore
+import com.smartphoneprogamming.afinal.List.dataModel.Writing
+import com.smartphoneprogamming.afinal.MainContentActivity
 import com.smartphoneprogamming.afinal.R
 import kotlinx.android.synthetic.main.activity_show_my_list.*
 import kotlinx.android.synthetic.main.recycler_item.view.*
@@ -19,6 +27,7 @@ import kotlinx.android.synthetic.main.recycler_item.view.*
 class ShowWritingListActivity : AppCompatActivity() {
     private lateinit var recyclerView : RecyclerView
     var firestore : FirebaseFirestore? = null
+    lateinit var toggle : ActionBarDrawerToggle
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,7 +36,7 @@ class ShowWritingListActivity : AppCompatActivity() {
         close.setOnClickListener{
             finish()
         }
-
+        nav_bar()
         firestore = FirebaseFirestore.getInstance()
         recyclerView = findViewById(R.id.recycler_view)
         recyclerView.adapter = RecyclerViewAdapter()
@@ -90,7 +99,20 @@ inner class RecyclerViewAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>(
 
         viewHolder.question.text = writingArrayList[position].question
         viewHolder.text.text = writingArrayList[position].text
-//            viewHolder.nick.text = writingArrayList[position].nick
+        viewHolder.sub.text = writingArrayList[position].nick
+        holder.itemView.setOnClickListener { v ->
+            val text: String = writingArrayList[position].text.toString()
+            val question: String =  writingArrayList[position].question.toString()
+            val nick: String =  writingArrayList[position].nick.toString()
+            val context = v.context
+            val intent: Intent
+            intent = Intent(v.context, DetailActivity::class.java)
+            intent.putExtra("text", text)
+            intent.putExtra("nick", nick)
+            intent.putExtra("question", question)
+            context.startActivity(intent)
+
+        }
     }
 
     // 리사이클러뷰의 아이템 총 개수 반환
@@ -112,5 +134,52 @@ inner class RecyclerViewAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>(
         }
     }
     }
+    fun nav_bar(){
+        val drawerLayout : DrawerLayout = findViewById(R.id.drawer_layout)
+        val navView : NavigationView = findViewById(R.id.nav_view)
+        toggle = ActionBarDrawerToggle(this, drawerLayout, R.string.open, R.string.close)
+        drawerLayout.addDrawerListener(toggle)
+        toggle.syncState()
+        setSupportActionBar(findViewById(R.id.toolbar))
+//
+        supportActionBar?.setDisplayShowTitleEnabled(false)
+        supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_baseline_dehaze_24)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
+        navView.setNavigationItemSelectedListener {
+            when(it.itemId){
+                R.id.write_texts -> intent = Intent(this, MainContentActivity::class.java)
+                R.id.show_yours -> Toast.makeText(applicationContext,"현재 페이지입니다", Toast.LENGTH_SHORT).show()
+                R.id.show_mine -> intent = Intent(this, ShowMyListActivity::class.java)
+                R.id.question -> intent = Intent(this, QuestionListActivity::class.java)
+//            R.id.setting -> intent = Intent(this, ::class.java)
+//            R.id.logout -> intent = Intent(this, ::class.java)
+
+            }
+            drawerLayout.closeDrawer(GravityCompat.START)
+            val nick = intent.getStringExtra("nick")
+            intent.putExtra("nick", nick)
+            startActivity(intent)
+
+            true
+        }
+    }
+
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if(toggle.onOptionsItemSelected(item)){
+            return true
+        }
+
+        return super.onOptionsItemSelected(item)
+    }
+
+    override fun onBackPressed() {
+        val drawerLayout : DrawerLayout = findViewById(R.id.drawer_layout)
+        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+            drawerLayout.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
+        }
+    }
 }

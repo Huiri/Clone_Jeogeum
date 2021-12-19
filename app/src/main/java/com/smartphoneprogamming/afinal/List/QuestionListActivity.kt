@@ -16,21 +16,20 @@ import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.navigation.NavigationView
-import com.google.firebase.firestore.*
+import com.google.firebase.firestore.FirebaseFirestore
 import com.smartphoneprogamming.afinal.List.dataModel.Writing
 import com.smartphoneprogamming.afinal.MainContentActivity
 import com.smartphoneprogamming.afinal.R
 import kotlinx.android.synthetic.main.recycler_item.view.*
 
-class ShowMyListActivity : AppCompatActivity() {
+class QuestionListActivity : AppCompatActivity() {
     private lateinit var recyclerView : RecyclerView
     var firestore : FirebaseFirestore? = null
     lateinit var toggle : ActionBarDrawerToggle
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_show_my_list)
-
+        setContentView(R.layout.activity_question_list)
         val close : Button = findViewById(R.id.close_btn)
         close.setOnClickListener{
             finish()
@@ -46,11 +45,9 @@ class ShowMyListActivity : AppCompatActivity() {
     inner class RecyclerViewAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         // Person 클래스 ArrayList 생성성
         var writingArrayList : ArrayList<Writing> = arrayListOf()
-        val nick : String = intent.getStringExtra("nick")!!
 
         init {  // telephoneBook의 문서를 불러온 뒤 Person으로 변환해 ArrayList에 담음
-            firestore?.collection("post")?.whereEqualTo("nick", nick)
-                ?.addSnapshotListener { querySnapshot, firebaseFirestoreException ->
+            firestore?.collection("question")?.addSnapshotListener { querySnapshot, firebaseFirestoreException ->
                     // ArrayList 비워줌
                     writingArrayList.clear()
 
@@ -80,19 +77,7 @@ class ShowMyListActivity : AppCompatActivity() {
             var viewHolder = (holder as ViewHolder).itemView
 
             viewHolder.question.text = writingArrayList[position].question
-            viewHolder.text.text = writingArrayList[position].text
-            holder.itemView.setOnClickListener { v ->
-                val text: String = writingArrayList[position].text.toString()
-                val question: String = writingArrayList[position].question.toString()
-//                val nick: String =  writingArrayList[position].nick.toString()
-                val context = v.context
-                val intent: Intent
-                intent = Intent(v.context, DetailActivity::class.java)
-                intent.putExtra("text", text)
-//                intent.putExtra("nick", nick)
-                intent.putExtra("question", question)
-                context.startActivity(intent)
-            }
+            viewHolder.text.text = writingArrayList[position].date.toString()
         }
 
         // 리사이클러뷰의 아이템 총 개수 반환
@@ -117,8 +102,9 @@ class ShowMyListActivity : AppCompatActivity() {
             when(it.itemId){
                 R.id.write_texts -> intent = Intent(this, MainContentActivity::class.java)
                 R.id.show_yours -> intent = Intent(this, ShowWritingListActivity::class.java)
-                R.id.show_mine -> Toast.makeText(applicationContext,"현재 페이지입니다", Toast.LENGTH_SHORT).show()
-                R.id.question -> intent = Intent(this, QuestionListActivity::class.java)
+                R.id.show_mine -> intent = Intent(this, ShowMyListActivity::class.java)
+                R.id.question -> Toast.makeText(applicationContext,"현재 페이지입니다", Toast.LENGTH_SHORT).show()
+
 //            R.id.setting -> intent = Intent(this, ::class.java)
 //            R.id.logout -> intent = Intent(this, ::class.java)
 

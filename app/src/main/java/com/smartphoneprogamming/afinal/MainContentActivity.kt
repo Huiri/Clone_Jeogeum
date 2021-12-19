@@ -23,8 +23,10 @@ import android.view.LayoutInflater
 import com.google.android.gms.tasks.OnFailureListener
 
 import com.google.android.gms.tasks.OnSuccessListener
+import com.google.firebase.auth.ktx.auth
 
 import com.google.firebase.firestore.DocumentReference
+import com.smartphoneprogamming.afinal.List.QuestionListActivity
 import com.smartphoneprogamming.afinal.List.ShowWritingListActivity
 import java.text.SimpleDateFormat
 
@@ -63,15 +65,15 @@ class MainContentActivity : AppCompatActivity() {
         navView.setNavigationItemSelectedListener {
             when(it.itemId){
                 R.id.write_texts -> Toast.makeText(applicationContext,"현재 페이지입니다",Toast.LENGTH_SHORT).show()
-            R.id.show_yours -> intent = Intent(this, ShowWritingListActivity::class.java)
-            R.id.show_mine -> intent = Intent(this, ShowMyListActivity::class.java)
-
-//            R.id.question -> intent = Intent(this, ::class.java)
+                R.id.show_yours -> intent = Intent(this, ShowWritingListActivity::class.java)
+                R.id.show_mine -> intent = Intent(this, ShowMyListActivity::class.java)
+                R.id.question -> intent = Intent(this, QuestionListActivity::class.java)
 //            R.id.setting -> intent = Intent(this, ::class.java)
-//            R.id.logout -> intent = Intent(this, ::class.java)
+                R.id.logout -> Firebase.auth.signOut()
 
             }
             drawerLayout.closeDrawer(GravityCompat.START);
+            intent.putExtra("nick", nick)
             startActivity(intent)
 
             true

@@ -13,7 +13,6 @@ import com.smartphoneprogamming.afinal.databinding.ActivityLoginBinding
 
 class LoginActivity : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
-    // [END declare_auth]
     private var _binding: ActivityLoginBinding? = null
     private val binding get() = _binding!!
 
