@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:title="My page">
+        <menu>
+            <item android:title="@string/write_main"
+                android:id = "@+id/write_texts"/>
+            <item android:title="@string/show_mine"
+                android:id = "@+id/show_mine"/>
+            <item android:title="@string/show_yours"
+                android:id = "@+id/show_yours"/>
+            <item android:title="@string/question"
+                android:id = "@+id/question"/>
+        </menu>
+    </item>
+
+    <item android:title="">
+        <menu>
+            <item android:title="@string/logout"
+                android:id = "@+id/logout"/>
+            <item android:title="@string/setting"
+                android:id = "@+id/setting"/>
+        </menu>
+    </item>
+</menu>

@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">Epilogue</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="write_main">글 작성하기</string>
+    <string name="show_mine">내 글 보러가기</string>
+    <string name="show_yours">다른 글 보러가기</string>
+    <string name="question">질문 보러가기</string>
+    <string name="setting">설정</string>
+    <string name="logout">로그아웃</string>
+    <string name="open">열기</string>
+    <string name="close">닫기</string>
+    <string name="nick">nick</string>
+    <string name="question_title">question</string>
+    <string name="text">text</string>
+    <string name="recycler_title_mine">나의 글 모아보기</string>
+    <string name="hello">오늘도 반갑습니다</string>
+    <string name="alone">혼자 간직할래요</string>
+    <string name="main_sub_title">오늘 당신의 글은 어떤가요</string>
+    <string name="complete">완료</string>
+    <string name="nickname">nickname</string>
+    <string name="email">email</string>
+    <string name="password">password</string>
+    <string name="login">login</string>
+    <string name="back">X</string>
+</resources>
