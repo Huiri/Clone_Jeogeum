@@ -10,6 +10,8 @@
                 android:id = "@+id/show_yours"/>
             <item android:title="@string/question"
                 android:id = "@+id/question"/>
+            <item android:title="@string/explain_app"
+                android:id = "@+id/explain"/>
         </menu>
     </item>
 

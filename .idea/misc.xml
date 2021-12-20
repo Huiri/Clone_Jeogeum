@@ -3,6 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/gmlfl/AndroidStudioProjects/Clone_Jeogeum/app/src/main/res/layout/activity_explain.xml" value="0.1" />
+        <entry key="..\:/Users/gmlfl/AndroidStudioProjects/Clone_Jeogeum/app/src/main/res/layout/explain1.xml" value="0.1" />
+        <entry key="..\:/Users/gmlfl/AndroidStudioProjects/Clone_Jeogeum/app/src/main/res/layout/fragment_explain1.xml" value="0.16666666666666666" />
+        <entry key="..\:/Users/gmlfl/AndroidStudioProjects/Clone_Jeogeum/app/src/main/res/layout/fragment_explain2.xml" value="0.16666666666666666" />
+        <entry key="..\:/Users/gmlfl/AndroidStudioProjects/Clone_Jeogeum/app/src/main/res/layout/fragment_explain3.xml" value="0.1" />
         <entry key="..\:/Users/gmlfl/AndroidStudioProjects/Final/app/src/main/res/drawable/navi_menu.xml" value="0.1953125" />
         <entry key="..\:/Users/gmlfl/AndroidStudioProjects/Final/app/src/main/res/layout/activity_detail.xml" value="0.1" />
         <entry key="..\:/Users/gmlfl/AndroidStudioProjects/Final/app/src/main/res/layout/activity_login.xml" value="0.16666666666666666" />

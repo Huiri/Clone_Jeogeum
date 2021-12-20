@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         <activity
+            android:name=".fragment.ExplainActivity"
+            android:exported="false" />
+        <activity
             android:name=".List.QuestionListActivity"
             android:exported="false" />
         <activity
@@ -22,7 +25,7 @@
             android:name=".List.DetailActivity"
             android:exported="false" />
         <activity
-            android:name=".login.LoginActivity"
+            android:name=".MainContentActivity"
             android:exported="false" />
         <activity
             android:name=".List.ShowMyListActivity"
@@ -31,7 +34,7 @@
             android:name=".login.SignUpActivity"
             android:exported="false" />
         <activity
-            android:name=".MainContentActivity"
+            android:name=".login.LoginActivity"
             android:exported="true"
             android:windowSoftInputMode="adjustPan">
             <intent-filter>

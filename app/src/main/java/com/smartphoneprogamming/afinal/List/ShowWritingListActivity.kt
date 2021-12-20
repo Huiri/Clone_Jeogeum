@@ -23,6 +23,7 @@ import com.google.firebase.ktx.Firebase
 import com.smartphoneprogamming.afinal.List.dataModel.Writing
 import com.smartphoneprogamming.afinal.MainContentActivity
 import com.smartphoneprogamming.afinal.R
+import com.smartphoneprogamming.afinal.fragment.ExplainActivity
 import com.smartphoneprogamming.afinal.setting.SettingActivity
 import kotlinx.android.synthetic.main.activity_show_my_list.*
 import kotlinx.android.synthetic.main.recycler_item.view.*
@@ -168,6 +169,9 @@ inner class RecyclerViewAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>(
                 R.id.setting -> {
                     intent = Intent(this, SettingActivity::class.java)
                     finish()
+                }
+                R.id.explain -> {
+                    intent = Intent(this, ExplainActivity::class.java)
                 }
                 R.id.logout -> {
                     Firebase.auth.signOut()

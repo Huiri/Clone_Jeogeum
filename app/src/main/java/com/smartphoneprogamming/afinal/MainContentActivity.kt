@@ -80,9 +80,9 @@ class MainContentActivity : AppCompatActivity() {
                 R.id.setting -> {
                     intent = Intent(this, SettingActivity::class.java)
                 }
-//                R.id.explain -> {
-//                    intent = Intent(this, ExplainActivity::class.java)
-//                }
+                R.id.explain -> {
+                    intent = Intent(this, ExplainActivity::class.java)
+                }
                 R.id.logout -> {
                     Toast.makeText(this, "로그아웃 완료.", Toast.LENGTH_LONG).show()
                     firebaseAuth.signOut()
