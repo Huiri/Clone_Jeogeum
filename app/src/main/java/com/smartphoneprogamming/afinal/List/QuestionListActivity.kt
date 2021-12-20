@@ -50,7 +50,8 @@ class QuestionListActivity : AppCompatActivity() {
         var writingArrayList : ArrayList<Writing> = arrayListOf()
 
         init {  // telephoneBook의 문서를 불러온 뒤 Person으로 변환해 ArrayList에 담음
-            firestore?.collection("question")?.addSnapshotListener { querySnapshot, firebaseFirestoreException ->
+            firestore?.collection("question")?.whereEqualTo("used", true)
+                ?.addSnapshotListener { querySnapshot, firebaseFirestoreException ->
                     // ArrayList 비워줌
                     writingArrayList.clear()
 

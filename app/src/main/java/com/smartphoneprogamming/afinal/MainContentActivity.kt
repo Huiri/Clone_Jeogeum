@@ -23,11 +23,13 @@ import android.view.LayoutInflater
 import com.google.android.gms.tasks.OnFailureListener
 
 import com.google.android.gms.tasks.OnSuccessListener
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 
 import com.google.firebase.firestore.DocumentReference
 import com.smartphoneprogamming.afinal.List.QuestionListActivity
 import com.smartphoneprogamming.afinal.List.ShowWritingListActivity
+import com.smartphoneprogamming.afinal.fragment.ExplainActivity
 import com.smartphoneprogamming.afinal.setting.SettingActivity
 import java.text.SimpleDateFormat
 
@@ -35,9 +37,9 @@ import java.text.SimpleDateFormat
 class MainContentActivity : AppCompatActivity() {
 
     val db = Firebase.firestore
+    var firebaseAuth = FirebaseAuth.getInstance()
     lateinit var toggle : ActionBarDrawerToggle
 //    val email : String = intent.getStringExtra("email")!!
-    val email : String = "qqq@naver.com"
     lateinit var nick : String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -78,9 +80,13 @@ class MainContentActivity : AppCompatActivity() {
                 R.id.setting -> {
                     intent = Intent(this, SettingActivity::class.java)
                 }
+//                R.id.explain -> {
+//                    intent = Intent(this, ExplainActivity::class.java)
+//                }
                 R.id.logout -> {
                     Toast.makeText(this, "로그아웃 완료.", Toast.LENGTH_LONG).show()
-                    Firebase.auth.signOut()
+                    firebaseAuth.signOut()
+                    this.finish()
                 }
             }
             drawerLayout.closeDrawer(GravityCompat.START);
@@ -153,6 +159,7 @@ class MainContentActivity : AppCompatActivity() {
             }
         }
     fun set_nick(){
+        val email = intent.getStringExtra("email")!!
         val UserRef = db.collection("users").document(email)
         UserRef.get().addOnSuccessListener { documentSnapshot ->
             val inflater =

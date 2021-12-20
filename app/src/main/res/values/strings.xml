@@ -37,4 +37,8 @@
     <string name="auto_login">자동로그인</string>
     <string name="register_text">회원가입하기</string>
     <string name="goback">로그인하기</string>
+    <string name="explain_app">에필로그란?</string>
+    <string name="_12_n">매일 12시에\n 새로운 질문을 드려요</string>
+    <string name="word">질문</string>
+    <string name="write_your_own">당신만의 글을 적어주세요.</string>
 </resources>
