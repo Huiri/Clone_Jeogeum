@@ -22,6 +22,7 @@
 
         <Spinner
             android:layout_marginTop="7dp"
+            android:fontFamily="@font/maruburi_regular"
             android:id="@+id/spinner"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
@@ -35,6 +36,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:hint="@string/search_hint"
+            android:fontFamily="@font/maruburi_semibold"
             android:inputType="text"
             android:textColorHint="@color/light_grey"
             android:textColor="@color/light"/>
@@ -45,6 +47,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/search"
+            android:fontFamily="@font/maruburi_semibold"
             android:textColor="@color/white"
             android:background="@color/blue"/>
 
@@ -69,6 +72,7 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:text="@string/back"
+        android:fontFamily="@font/maruburi_regular"
         android:textColor="@color/white"
         android:textSize="30sp"
         android:layout_marginTop="75dp"
@@ -82,8 +86,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/recycler_title_mine"
+        android:fontFamily="@font/songmyung_regular"
         android:textColor="@color/white"
-        android:textSize="30sp"
+        android:textSize="40sp"
         android:textStyle="bold"
         android:layout_marginTop="80dp"
         android:layout_marginLeft="20dp"

@@ -8,6 +8,7 @@
     android:background="@drawable/nightimg">
 
     <TextView
+        android:fontFamily="@font/songmyung_regular"
         android:id="@+id/AppTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -21,6 +22,7 @@
 
 
     <EditText
+        android:fontFamily="@font/maruburi_regular"
         android:id="@+id/email"
         android:layout_width="220dp"
         android:layout_height="wrap_content"
@@ -35,6 +37,7 @@
         android:gravity="center"/>
 
     <TextView
+        android:fontFamily="@font/maruburi_regular"
         android:id="@+id/warning_email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -46,6 +49,7 @@
         />
 
     <EditText
+        android:fontFamily="@font/maruburi_regular"
         android:id="@+id/password"
         android:layout_width="220dp"
         android:layout_height="wrap_content"
@@ -60,6 +64,7 @@
         android:gravity="center"/>
 
     <TextView
+        android:fontFamily="@font/maruburi_regular"
         android:id="@+id/warning_password"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -71,6 +76,7 @@
         />
 
     <EditText
+        android:fontFamily="@font/maruburi_regular"
         android:id="@+id/password2"
         android:layout_width="220dp"
         android:layout_height="wrap_content"
@@ -85,6 +91,7 @@
         android:gravity="center"/>
 
     <TextView
+        android:fontFamily="@font/maruburi_regular"
         android:id="@+id/warning_password2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -96,6 +103,7 @@
         />
 
     <EditText
+        android:fontFamily="@font/maruburi_regular"
         android:id="@+id/nickname"
         android:layout_width="220dp"
         android:textColorHint="@color/light_grey"
@@ -109,6 +117,7 @@
         android:gravity="center"/>
 
     <TextView
+        android:fontFamily="@font/maruburi_regular"
         android:id="@+id/warning_nick"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -119,6 +128,7 @@
         app:layout_constraintTop_toBottomOf="@+id/nickname"
         />
     <Button
+        android:fontFamily="@font/maruburi_regular"
         android:id="@+id/btnregister"
         android:text="@string/register_text"
         android:background="@color/deep_blue"
@@ -132,6 +142,7 @@
         android:layout_margin="50dp"/>
 
     <Button
+        android:fontFamily="@font/maruburi_regular"
         android:id="@+id/back"
         android:layout_width="200dp"
         android:layout_height="wrap_content"

@@ -9,12 +9,13 @@
     android:layout_marginBottom="20dp">
 
     <TextView
+        android:fontFamily="@font/songmyung_regular"
         android:id="@+id/question"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/question_title"
         android:textStyle="bold"
-        android:textSize="26sp"
+        android:textSize="28sp"
         android:layout_marginTop="5dp"
         android:layout_marginLeft="17dp"
         android:textColor="@color/light_grey"
@@ -22,12 +23,13 @@
         app:layout_constraintTop_toTopOf="parent"/>
 
     <TextView
+        android:fontFamily="@font/maruburi_semibold"
         android:id="@+id/sub"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/nick"
         android:textStyle="bold"
-        android:textSize="15sp"
+        android:textSize="22sp"
         android:visibility="gone"
         android:layout_marginTop="5dp"
         android:layout_marginLeft="20dp"

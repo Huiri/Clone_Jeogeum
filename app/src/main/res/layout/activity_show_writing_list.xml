@@ -27,6 +27,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:entries="@array/option"
+            android:fontFamily="@font/maruburi_regular"
             android:textColor="@color/light"/>
 
         <EditText
@@ -35,6 +36,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:fontFamily="@font/maruburi_semibold"
             android:hint="@string/search_hint"
             android:inputType="text"
             android:textColorHint="@color/light_grey"
@@ -46,6 +48,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/search"
+            android:fontFamily="@font/maruburi_regular"
             android:textColor="@color/white"
             android:background="@color/blue"/>
 
@@ -73,6 +76,7 @@
         android:textSize="30sp"
         android:layout_marginTop="75dp"
         android:id="@+id/close_btn"
+        android:fontFamily="@font/maruburi_regular"
         style="?android:attr/borderlessButtonStyle"
         android:backgroundTint="#00FFFFFF"
         android:background="#00FFFFFF"/>
@@ -83,7 +87,8 @@
         android:layout_height="wrap_content"
         android:text="@string/writing_list"
         android:textColor="@color/white"
-        android:textSize="30sp"
+        android:fontFamily="@font/songmyung_regular"
+        android:textSize="40sp"
         android:textStyle="bold"
         android:layout_marginTop="80dp"
         android:layout_marginLeft="20dp"

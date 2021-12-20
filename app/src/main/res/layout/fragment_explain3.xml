@@ -7,6 +7,7 @@
     tools:context=".fragment.Explain3Fragment"
     android:background="@drawable/nightimg">
     <TextView
+        android:fontFamily="@font/songmyung_regular"
         android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -20,6 +21,7 @@
         android:layout_marginTop="90dp"/>
 
     <TextView
+        android:fontFamily="@font/maruburi_semibold"
         android:id="@+id/hi_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -43,6 +45,7 @@
         android:layout_marginTop="20dp"/>
 
     <TextView
+        android:fontFamily="@font/maruburi_regular"
         android:id="@+id/intro_text1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -69,6 +72,7 @@
         app:layout_constraintLeft_toLeftOf="parent" />
 
     <TextView
+        android:fontFamily="@font/maruburi_semibold"
         android:id="@+id/push_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -94,6 +98,7 @@
         app:layout_constraintBottom_toTopOf="@+id/intro_text2"/>
 
     <TextView
+        android:fontFamily="@font/maruburi_regular"
         android:id="@+id/intro_text2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -106,6 +111,7 @@
         app:layout_constraintLeft_toLeftOf="parent" />
 
     <TextView
+        android:fontFamily="@font/maruburi_regular"
         android:id="@+id/intro_text3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -118,6 +124,7 @@
         app:layout_constraintLeft_toLeftOf="parent" />
 
     <TextView
+        android:fontFamily="@font/maruburi_semibold"
         android:id="@+id/out_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
